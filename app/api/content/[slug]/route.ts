@@ -1,11 +1,13 @@
+export const runtime = 'nodejs'
+
 import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 
 export async function GET(
   req: NextRequest,
-  context: { params: { slug: string } }
-) {
+  context: any
+): Promise<NextResponse> {
   const { slug } = context.params
   try {
     const filePath = path.join(process.cwd(), 'data', 'content', `${slug}.md`)
