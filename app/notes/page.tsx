@@ -113,6 +113,7 @@ export default function Notes() {
           <img
             src={src}
             alt="note"
+            loading={i < 4 ? 'eager' : 'lazy'}
             className="w-full h-auto block transition-transform duration-300 ease-in-out hover:scale-110 rounded cursor-zoom-in"
           />
         )}

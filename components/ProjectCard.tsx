@@ -15,6 +15,7 @@ interface ProjectCardProps {
   tags?: string[]
   buttonOnClick?: () => void
   buttonHref?: string
+  priority?: boolean
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -27,6 +28,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   tags,
   buttonOnClick,
   buttonHref,
+  priority,
 }) => {
   const router = useRouter()
 
@@ -217,6 +219,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             alt={finalTitle || ''}
             fill
             sizes="(max-width: 768px) 100vw, 60vw"
+            priority={priority}
             style={{ objectFit: 'cover' }}
             className={`absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-105 ${
               entered ? 'scale-100 translate-y-0' : 'scale-[1.04] translate-y-4'

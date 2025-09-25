@@ -99,7 +99,11 @@ cursor-pointer
                   forceVisible={index === 0}
                   threshold={0.02} // 这里设置阈值，0.01表示元素只要1%进入视口就触发动画
                 >
-                  <ProjectCard slug={project.slug} type={project.type} />
+                  <ProjectCard
+                    slug={project.slug}
+                    type={project.type}
+                    priority={index === 0}
+                  />
                 </FadeInWhenVisible>
               ))}
           </div>

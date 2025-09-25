@@ -119,7 +119,7 @@ function Home() {
           >
             <video
               ref={videoRef}
-              src="https://framerusercontent.com/assets/cPKRRKuW0jpaC4klxDzwXI0sU.mp4"
+              src="/lanyard/hero.mp4"
               loop
               autoPlay
               muted
