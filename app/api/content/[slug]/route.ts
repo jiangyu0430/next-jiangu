@@ -4,9 +4,9 @@ import path from 'path'
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { slug: string } }
+  context: { params: { slug: string } }
 ) {
-  const { slug } = params
+  const { slug } = context.params
   try {
     const filePath = path.join(process.cwd(), 'data', 'content', `${slug}.md`)
     const content = fs.readFileSync(filePath, 'utf-8')
