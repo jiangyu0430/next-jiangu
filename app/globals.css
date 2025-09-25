@@ -1,15 +1,99 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* globals.css for Next.js + Tailwind v4 */
+@font-face {
+  font-family: 'Poppins';
+  src: url('/font/Poppins-Regular.woff2') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('/font/Poppins-Medium.woff2') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('/font/Poppins-SemiBold.woff2') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Oswald';
+  src: url('/font/Oswald-Medium.woff2') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ApfelGrotezk';
+  src: url('/font/ApfelGrotezk-Regular.woff2') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ApfelGrotezk';
+  src: url('/font/ApfelGrotezk-Medium.woff2') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'ApfelGrotezk';
+  src: url('/font/ApfelGrotezk-Bold.woff2') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@config "../tailwind.config.ts";
+@import 'tailwindcss';
+@import 'tailwindcss/preflight' layer(base);
+@import 'tailwindcss/utilities' layer(utilities);
+
+:root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+/* 只在未被 Tailwind cursor 类覆盖的元素上使用自定义鼠标指针 */
+body:not([class*='cursor-']) {
+  cursor: url('/cursor-black.png'), auto;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+::-webkit-scrollbar:hover {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(16, 24, 40, 0.2);
+  border-radius: 9999px;
+  transition: background-color 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(16, 24, 40, 0.4);
+}
+
+/* Firefox 滚动条样式 */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(16, 24, 40, 0.2) transparent;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(16, 24, 40, 0.4);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +103,45 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* 浅色模式选中样式 */
+::selection {
+  background-color: #ffecbe;
+  color: #000;
+}
+
+/* 暗色模式 */
+html.dark ::selection {
+  background-color: #7575f3;
+  color: #fff;
+}
+
+/* 全局或者组件模块 CSS */
+.nav-item {
+  position: relative;
+  display: inline-block; /* 确保宽度和定位正确 */
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left; /* 左边开始扩展和收缩 */
+  transition: transform 0.3s ease;
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+  transform: scaleX(1);
+}
+
+/* Theme Toggler */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
