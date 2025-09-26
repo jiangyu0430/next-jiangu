@@ -55,7 +55,7 @@ export const ResponsiveCardLayout = () => {
             <p>People don’t know what they want until you show it to them.</p>
             <div className="flex items-center mt-8 gap-3">
               <Image
-                src="/Steve Jobs.jpg"
+                src="/steveJobs.jpg"
                 alt="Steve Jobs"
                 width={48}
                 height={48}

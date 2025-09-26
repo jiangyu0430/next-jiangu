@@ -163,7 +163,7 @@ const Footer = () => {
         <div className="flex items-center gap-1 text-sm text-white/60">
           <div className="flex items-center gap-2 hover:text-white">
             <Image
-              src="/Record.png"
+              src="/record.png"
               alt="备案"
               width={16}
               height={16}
