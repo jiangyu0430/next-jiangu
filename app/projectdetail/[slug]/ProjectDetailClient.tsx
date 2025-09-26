@@ -40,7 +40,7 @@ export default function ProjectDetailClient({
   // 控制首图显示
   const [showHero, setShowHero] = useState(true)
   const sentinelRef = useRef<HTMLDivElement>(null)
-  const [isDark, setIsDark] = useState(false)
+  const [isDark, setIsDark] = useState(true)
   // 强制加载动画
   const [isLoading, setIsLoading] = useState(true)
   // 视频和容器 refs 及 intersection 状态
@@ -225,7 +225,7 @@ export default function ProjectDetailClient({
       <motion.section
         ref={infoSectionRef}
         className={`project-info bg-white dark:bg-black overflow-hidden -mt-10 z-30 sticky top-0 ${
-          isSticky ? '' : 'rounded-t-3xl'
+          isSticky ? 'border-t-0' : 'border-t border-white/30 rounded-t-3xl'
         }`}
         initial={{ y: 80 }}
         animate={{ y: 0 }}
@@ -362,11 +362,10 @@ export default function ProjectDetailClient({
                     return (
                       <div
                         key={index}
-                        className={`image-container relative w-full overflow-hidden aspect-video ${marginClass}`}
+                        className={`image-container relative w-full overflow-hidden aspect-video bg-gray-100 dark:bg-zinc-800 ${marginClass}`}
                         ref={(el) => {
                           containerRefs.current[index] = el
                         }}
-                        style={{ backgroundColor: '#f0f0f0' }}
                       >
                         <Image
                           src={`${projectContent.baseUrl}${fileName}-2880.webp`}
@@ -413,11 +412,10 @@ export default function ProjectDetailClient({
                     return (
                       <div
                         key={index}
-                        className={`image-container relative w-full overflow-hidden aspect-video ${marginClass}`}
+                        className={`image-container relative w-full overflow-hidden aspect-video bg-gray-100 dark:bg-zinc-800 ${marginClass}`}
                         ref={(el) => {
                           containerRefs.current[index] = el
                         }}
-                        style={{ backgroundColor: '#f0f0f0' }}
                       >
                         <Image
                           src={

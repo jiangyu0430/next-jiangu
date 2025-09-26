@@ -62,8 +62,11 @@ const projects: Project[] = [
     type: '设计系统',
     description:
       '21 年 Arco Design 发布，以更轻量、现代的风格打破传统中后台的设计惯性，展现出明显的探索性。我被其设计语言深深吸引，恰逢 Figma 在国内大热，我主动发起并搭建了覆盖 Web、Mobile、Arco Pro 的 Figma 资源库，目前社区总引用量超过 100k。',
-    image:
-      'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/cover/arcoDesign_light.webp',
+    image: {
+      wide: 'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/cover/arcoDesign_light.webp',
+      square:
+        'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/cover/arco_square.webp',
+    },
     tags: ['Design System', 'ByteDance', 'Components'],
   },
   {

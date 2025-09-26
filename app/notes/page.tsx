@@ -125,14 +125,16 @@ export default function Notes() {
     (src) => src && src.trim() !== ''
   )
 
+  const placeholderThumb =
+    'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/notes/thumb.png'
+
   const dynamicItems: GalleryItem[] = filteredNotesImages
     .slice(0, visibleCount)
     .map((src) => {
       const isVideo = src.endsWith('.mp4')
       if (isVideo) {
         return {
-          thumb: src,
-          // LightGallery video plugin expects a "video" property with "source" and "attributes"
+          thumb: placeholderThumb,
           video: {
             source: [{ src, type: 'video/mp4' }],
             tracks: [],
@@ -141,7 +143,7 @@ export default function Notes() {
               controls: true,
               playsInline: true,
             },
-            poster: '',
+            poster: placeholderThumb,
           },
         }
       } else {

@@ -58,7 +58,7 @@ export default function Navbar() {
     { to: '/projects', label: '项目集', isActive: matchProjects },
     { to: '/notes', label: '随手记', isActive: matchNotes },
     { to: '/about', label: '关于我', isActive: matchAbout },
-    { to: '/contact', label: '联系', isActive: pathname === '/contact' },
+    { to: '/contact', label: '联系我', isActive: pathname === '/contact' },
   ]
 
   return (

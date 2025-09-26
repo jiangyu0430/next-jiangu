@@ -18,6 +18,10 @@ import FAQ from '@/components/Faq'
 import { InteractiveHoverButton } from '@/components/InteractiveHoverButton'
 import CountUp from '@/components/CountUp'
 import { Highlighter } from '@/components/Highlighter'
+import HoverLottieIcon from '@/components/HoverLottieIcon'
+import behanceAnimation from '@/public/Lottie/behance.json'
+import dribbbleAnimation from '@/public/Lottie/dribbble.json'
+import twitterAnimation from '@/public/Lottie/twitter.json'
 
 // 工具函数：计算从指定年月到当前日期的年份数（四舍五入取整）
 function calculateYearsSinceRounded(year: number, month: number): number {
@@ -80,7 +84,7 @@ export default function About() {
   return (
     <div className="w-full bg-white rounded-b-3xl overflow-hidden">
       {/* 简介区 */}
-      <section className="pt-25 pb-25 h-auto lg:h-screen lg:min-h-[920px] bg-white  overflow-hidden rounded-b-3xl">
+      <section className="pt-25 pb-25 h-auto lg:h-screen lg:min-h-[1000px] bg-white  overflow-hidden rounded-b-3xl">
         <FadeInWhenVisible delay={0.1} forceVisible={true} once>
           <div className="text-6xl font-bold max-w-screen-2xl mx-auto px-8 mb-10 text-center md:text-left opacity-10">
             关于我
@@ -95,7 +99,7 @@ export default function About() {
                 <Highlighter action="underline" color="#87CEFA">
                   姜宇
                 </Highlighter>
-                ，一名产品设计师和独立开发者。
+                ，一名产品设计师和开发爱好者。
               </p>
               <p>
                 1997
@@ -122,10 +126,28 @@ export default function About() {
                   className="object-cover w-full h-full rounded-3xl"
                 />
               </div>
-              <div className="mt-6 flex gap-6">
-                <div className="bg-zinc-100 h-16 w-16 rounded-lg"></div>
-                <div className="bg-zinc-100 h-16 w-16 rounded-lg"></div>
-                <div className="bg-zinc-100 h-16 w-16 rounded-lg"></div>
+              <div className="mt-6 flex gap-4">
+                <div className="bg-zinc-100 pt-2 p-3 rounded-lg items-center justify-center flex cursor-pointer hover:bg-zinc-200">
+                  <HoverLottieIcon
+                    animationData={twitterAnimation}
+                    size={32}
+                    //href="/404"
+                  />
+                </div>
+                <div className="bg-zinc-100 p-3 rounded-lg items-center justify-center flex cursor-pointer hover:bg-zinc-200">
+                  <HoverLottieIcon
+                    animationData={dribbbleAnimation}
+                    size={32}
+                    //href="/404"
+                  />
+                </div>
+                <div className="bg-zinc-100 p-3 rounded-lg items-center justify-center flex cursor-pointer hover:bg-zinc-200">
+                  <HoverLottieIcon
+                    animationData={behanceAnimation}
+                    size={32}
+                    //href="/404"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -150,8 +172,8 @@ export default function About() {
         <div className="relative">
           <ScrollRevealTitle>
             <SectionTitle
-              title="助手查询"
-              description="「123132」"
+              title="过往经历"
+              description="「每一次尝试都是新的体验，每一段经历都是成长的印记」"
               theme="dark"
             />
           </ScrollRevealTitle>
@@ -295,6 +317,7 @@ export default function About() {
               ))}
             </span>
           </motion.div>
+
           {/* 经历明细 */}
           <div>
             {experiences.map(
@@ -310,12 +333,12 @@ export default function About() {
                   <div
                     className={`absolute w-screen left-1/2 -translate-x-1/2 ${bgColor} h-full top-0 bottom-0 z-0`}
                   />
-                  <div className="max-w-screen-2xl mx-auto px-8 py-6 relative z-10 flex justify-between text-[40px] font-medium items-center overflow-hidden">
+                  <div className="max-w-screen-2xl mx-auto px-8 py-7 relative z-10 flex justify-between text-4xl font-medium items-center overflow-hidden">
                     <div className="flex flex-1 items-end">
                       <div className="w-1/3 text-black">{text}</div>
                       <div className="w-1/2 ">{position}</div>
                     </div>
-                    <div className="absolute right-8 top-6 flex flex-col items-end overflow-hidden">
+                    <div className="absolute right-8 top-5 flex flex-col items-end overflow-hidden">
                       <span
                         className={`text-8xl font-Oswald bg-gradient-to-t from-white/0 to-white/80 bg-clip-text text-transparent transition-transform duration-500 delay-300 group-hover:-translate-y-24 ${
                           number === '01' ? 'tracking-wider' : ''
@@ -323,7 +346,7 @@ export default function About() {
                       >
                         {number}
                       </span>
-                      <span className="translate-y-10 opacity-0 transition-all duration-500 delay-300 group-hover:-translate-y-24 group-hover:opacity-100">
+                      <span className="translate-y-10 opacity-0 transition-all duration-500 delay-300 group-hover:-translate-y-[86px] group-hover:opacity-100">
                         {date}
                       </span>
                     </div>
@@ -347,7 +370,7 @@ export default function About() {
                     FAQ
                   </p>
                   <p className="text-lg leading-[1.5] font-normal text-zinc-700 w-full lg:max-w-[400px]">
-                    快速了解我的工作方式及看法，当然如果你有其他任何问题，也欢迎随时与我联系。
+                    这里整理了常见的问题与回答，从工作流程到设计思考，帮助你更快了解我
                   </p>
                   <InteractiveHoverButton
                     href="/contact"
@@ -367,10 +390,12 @@ export default function About() {
                     question: '该网站是你自己搭建的吗 ？',
                     answer: (
                       <>
-                        是的，该网站完全由我自主搭建，过程中以 ChatGPT
-                        作为辅助工具。使用 Next.js 提供服务端渲染能力，搭配
-                        React 组件化和 Tailwind CSS
-                        样式，如果你也对此感兴趣，可以参考文章 —{' '}
+                        <p>
+                          是的，该网站完全由我自主搭建，过程中以 ChatGPT
+                          作为辅助工具。使用 Next.js 提供服务端渲染能力，搭配
+                          React 组件化和 Tailwind 样式。
+                        </p>
+                        如果你也对此感兴趣，可以参考我的文章 —{' '}
                         <a
                           href="/blogdetail/my-first-personal-website"
                           target="_blank"
@@ -384,23 +409,46 @@ export default function About() {
                   },
                   {
                     question: '工作以来一直从事 ToB 行业吗 ？',
-                    answer:
-                      '使用设计体系可以降低重复设计成本，提升团队协作效率，同时保证用户体验一致性。',
+                    answer: (
+                      <>
+                        是的，我一直在从事 B
+                        端设计工作，因为它更强调思维的系统性和分析能力。B
+                        端产品涉及复杂业务和数据，我喜欢在设计中梳理清晰的逻辑、分析用户行为和业务流程，并通过界面和交互让操作高效可控。
+                      </>
+                    ),
                   },
                   {
                     question: '你是怎么看待用户体验的 ？',
                     answer:
-                      '设计体系通过组件库和文档规范，让开发可以快速实现设计意图，减少沟通成本。',
+                      '对我来说，用户体验就是让用户顺利完成任务、感到操作自然和高效。工作当中，会尤其关注信息清晰、操作逻辑合理和流程可控，通过分析用户行为、优化界面和不断迭代，让复杂业务变得更易用。',
                   },
                   {
                     question: '在团队中的工作流程是怎样的 ？',
-                    answer:
-                      '设计体系通过组件库和文档规范，让开发可以快速实现设计意图，减少沟通成本。',
+                    answer: (
+                      <>
+                        <p>
+                          需求讨论 -&gt; PRD 澄清 -&gt; 设计产出（设计定义 &amp;
+                          设计输出） -&gt; 设计自查与评审 -&gt; 设计澄清 -&gt;
+                          开发软设 &amp; 测试策略澄清 -&gt; 开发后走查验收 -&gt;
+                          版本末复盘。
+                        </p>
+                        <div className="mt-4 space-y-2">
+                          <p>
+                            <strong>设计定义：</strong> 根据实际需要产出 user
+                            story、概念理解、设计边界、竞品调研、原型图、流程图、框架图等，用于建立对问题和方案的整体认知。
+                          </p>
+                          <p>
+                            <strong>设计输出：</strong>{' '}
+                            交付带有交互说明的视觉稿，确保开发和测试能够准确理解设计细节。
+                          </p>
+                        </div>
+                      </>
+                    ),
                   },
                   {
                     question: '在工作中该如何提效 ？',
                     answer:
-                      '设计体系通过组件库和文档规范，让开发可以快速实现设计意图，减少沟通成本。',
+                      '我觉得提效不仅是做事快，更是通过系统化方法减少重复和浪费。比如，先梳理业务流程和设计目标，明确优先级；同时利用设计体系和可复用组件库减少重复劳动；在协作上，通过早期评审、清晰的文档和跨团队沟通，降低返工成本；整个过程中，也需要结合数据和用户行为不断迭代，让设计既高效又精准。',
                   },
                 ]}
               />

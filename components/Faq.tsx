@@ -54,7 +54,7 @@ export default function FAQ({ items }: FAQProps) {
                   transition={{ duration: 0.3, ease: 'easeIn' }}
                   className="overflow-hidden"
                 >
-                  <div className="pb-8 text-gray-700 max-w-[520px] w-full leading-relaxed text-justify">
+                  <div className="pb-8 text-gray-700 max-w-[520px] w-full leading-relaxed text-justify space-y-2">
                     {item.answer}
                   </div>
                 </motion.div>

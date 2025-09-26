@@ -72,7 +72,7 @@ export const ResponsiveCardLayout = () => {
         {/* B卡片 */}
         <Card className="h-[400px] flex flex-col justify-between">
           <div className="flex justify-between items-center gap-2">
-            <div className="text-lg">Experience</div>
+            <div className="text-lg font-medium">工作经验</div>
             <div className="bg-zinc-100 text-zinc-800 px-4 py-2 rounded-full">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +85,7 @@ export const ResponsiveCardLayout = () => {
             </div>
           </div>
           <div>
-            <div className="flex items-baseline text-5xl mb-2">
+            <div className="flex items-baseline text-5xl mb-4">
               {/* 使用工具函数 calculateYearsSinceRounded */}
               <CountUp
                 from={0}
@@ -97,7 +97,10 @@ export const ResponsiveCardLayout = () => {
               />
               +
             </div>
-            <div className="text-zinc-500">abcajdshas</div>
+            <div className="text-zinc-500 text-base leading-relaxed text-justify">
+              2020 年毕业参加工作，主导过智能制造、云计算存储等 B
+              端产品设计工作，覆盖设计全流程。
+            </div>
           </div>
         </Card>
 
@@ -125,7 +128,7 @@ export const ResponsiveCardLayout = () => {
         {/* E卡片 */}
         <Card className="h-[400px] flex flex-col justify-between">
           <div className="flex justify-between items-center gap-2">
-            <div className="text-lg">Projects</div>
+            <div className="text-lg font-medium">累积项目</div>
             <div className="bg-zinc-100 text-zinc-800 px-4 py-2 rounded-full">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -138,10 +141,10 @@ export const ResponsiveCardLayout = () => {
             </div>
           </div>
           <div>
-            <div className="flex items-baseline text-5xl mb-2">
+            <div className="flex items-baseline text-5xl mb-4">
               <CountUp
                 from={0}
-                to={43}
+                to={40}
                 direction="up"
                 duration={0.3}
                 delay={0.4}
@@ -149,7 +152,7 @@ export const ResponsiveCardLayout = () => {
               />
               +
             </div>
-            <div className="text-zinc-500">
+            <div className="text-zinc-500 text-base leading-relaxed text-justify">
               Across web, product, and identity — each one built with care and
               precision.
             </div>

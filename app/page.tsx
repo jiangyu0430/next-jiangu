@@ -169,7 +169,7 @@ function Home() {
             <SectionTitle
               title="精选作品"
               //subtitle="作品"
-              description="「每一个作品，都是一次思考的具象化。从概念到落地，记录设计如何转化为真实的用户体验。」"
+              description="「每一个作品，都是一次思考的具象化。从概念到落地，记录设计如何转化为真实的用户体验」"
             />
           </ScrollRevealTitle>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 lg:gap-y-8 gap-y-4">
@@ -221,7 +221,7 @@ function Home() {
             <SectionTitle
               theme="dark"
               title="生活片段"
-              description="「生活中零散的片段，简单却真实，悄悄记录着每一个温暖的瞬间。」"
+              description="「生活中零散的片段，简单却真实，悄悄记录着每一个温暖的瞬间」"
             />
           </ScrollRevealTitle>
           <div
@@ -239,7 +239,7 @@ function Home() {
           <ScrollRevealTitle>
             <SectionTitle
               title="最近写下"
-              description="「关于设计的思考、工具的探索、以及行业的见闻。这里记录着我的持续理解与表达。」"
+              description="「关于设计的思考、工具的探索、以及行业的见闻。这里记录着我的持续理解与表达」"
             />
           </ScrollRevealTitle>
           {(() => {

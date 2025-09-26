@@ -189,7 +189,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       {/* 中部分：支持本地/网络图、gif、mp4，带 hover 动效 */}
       <div
         onClick={handleClick}
-        className="relative w-full aspect-video overflow-hidden group cursor-pointer"
+        className="relative w-full aspect-video overflow-hidden group cursor-pointer bg-gray-100"
         onMouseEnter={(e) => {
           targetX.current = e.clientX
           targetY.current = e.clientY
