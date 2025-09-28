@@ -144,7 +144,7 @@ const WorkCard: React.FC<WorkCardProps> = ({
     >
       {/* 图片部分 */}
       <div
-        className="relative h-[240px] sm:h-[420px] lg:h-[620px] rounded-2xl overflow-hidden group"
+        className="relative h-[240px] sm:h-[420px] lg:h-[620px] rounded-2xl overflow-hidden group bg-zinc-100"
         onMouseEnter={(e) => {
           targetX.current = e.clientX
           targetY.current = e.clientY

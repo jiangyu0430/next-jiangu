@@ -113,6 +113,8 @@ export default function ProjectDetailPage() {
 
   const params = useParams()
   const slug = Array.isArray(params?.slug) ? params?.slug[0] : params?.slug
+  // 首图加载完成后进行动画
+  const [imageLoaded, setImageLoaded] = useState(false)
 
   const project: Blog | undefined = blogs.find((p) => p.slug === slug)
 
@@ -181,6 +183,7 @@ export default function ProjectDetailPage() {
               style={{ width: '100%', height: 'auto' }}
               className="rounded object-contain"
               priority
+              onLoadingComplete={() => setImageLoaded(true)} // 图片加载完成
             />
 
             {/* 黑色遮罩层 */}

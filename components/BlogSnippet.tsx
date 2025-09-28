@@ -136,7 +136,7 @@ export const BlogSnippet: React.FC<BlogSnippetProps> = ({
       }`}
     >
       <div
-        className={`relative overflow-hidden group ${
+        className={`relative overflow-hidden bg-zinc-100 group ${
           isVertical
             ? `${imgHeight ?? (isLarge ? 'h-60' : 'h-40')} ${
                 imgWidth ?? 'w-full'

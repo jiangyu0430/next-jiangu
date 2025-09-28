@@ -47,7 +47,8 @@ export default function ProjectDetailClient({
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
   const containerRefs = useRef<(HTMLDivElement | null)[]>([])
   const [isIntersectingList, setIsIntersectingList] = useState<boolean[]>([])
-
+  // 首图加载完成后进行动画
+  const [imageLoaded, setImageLoaded] = useState(false)
   // 横向滚动区块 ref
   const scrollContainer = useRef<HTMLDivElement>(null)
   // 横向滚动按钮状态
@@ -203,6 +204,7 @@ export default function ProjectDetailClient({
               style={{ width: '100%', height: 'auto' }}
               className="rounded object-contain"
               priority
+              onLoadingComplete={() => setImageLoaded(true)} // 图片加载完成
             />
           </motion.div>
         )}
