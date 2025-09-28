@@ -3,9 +3,15 @@ import type { NextConfig } from 'next'
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    domains: [
-      'my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com',
-      'cdn.dribbble.com',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.dribbble.com',
+      },
     ],
   },
 }
