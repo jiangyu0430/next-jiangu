@@ -81,6 +81,18 @@ export default function ProjectDetailClient({
     return () => clearTimeout(timer)
   }, [])
 
+  // 初始化 isIntersectingList 长度，确保每个视频有对应布尔值
+  useEffect(() => {
+    if (!projectContent?.images) return
+    setIsIntersectingList((prev) => {
+      // 只在长度不匹配时重置
+      if (prev.length !== projectContent.images.length) {
+        return Array(projectContent.images.length).fill(false)
+      }
+      return prev
+    })
+  }, [projectContent?.images?.length])
+
   // 统一 IntersectionObserver 处理所有视频容器
   useEffect(() => {
     const observers: IntersectionObserver[] = []
@@ -95,14 +107,14 @@ export default function ProjectDetailClient({
             return next
           })
         },
-        { threshold: 0.25 }
+        { threshold: 0.05 }
       )
       observer.observe(container)
       observers.push(observer)
     })
 
     return () => observers.forEach((observer) => observer.disconnect())
-  }, [])
+  }, [projectContent?.images?.length])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -163,6 +175,20 @@ export default function ProjectDetailClient({
   // 为了客户端组件简洁，建议由父组件传入 projects，如需此处演示可用 require 导入
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const projects = require('../../../data/projects').default
+
+  // 根据 isIntersectingList 控制视频播放和暂停
+  useEffect(() => {
+    videoRefs.current.forEach(
+      (video: HTMLVideoElement | null, index: number) => {
+        if (!video) return
+        if (isIntersectingList[index]) {
+          video.play().catch(() => {})
+        } else {
+          video.pause()
+        }
+      }
+    )
+  }, [isIntersectingList])
 
   return (
     <div
@@ -334,9 +360,10 @@ export default function ProjectDetailClient({
                           }}
                           loop
                           muted
+                          playsInline
+                          autoPlay
                           src={projectContent.baseUrl + content}
                           className="w-full"
-                          autoPlay={!!isIntersectingList[index]}
                         />
                       </div>
                     )

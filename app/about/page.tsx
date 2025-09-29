@@ -107,19 +107,24 @@ export default function About() {
       )}
 
       {/* 简介区 */}
-      <section className="pt-25 pb-25 h-auto lg:h-screen lg:min-h-[1000px] bg-white  overflow-hidden rounded-b-3xl">
+      <section className="pt-25 pb-25 h-auto lg:h-screen lg:min-h-[1084px] bg-white  overflow-hidden rounded-b-3xl">
         <FadeInWhenVisible delay={0.1} forceVisible={true} once>
-          <div className="text-6xl font-bold max-w-screen-2xl mx-auto px-8 mb-10 text-center md:text-left opacity-10">
+          <div className="text-6xl font-bold max-w-screen-2xl mx-auto px-8 mb-10 text-center md:text-left">
             关于我
           </div>
         </FadeInWhenVisible>
         <FadeInWhenVisible delay={0.2} forceVisible={true} once>
-          <div className="max-w-screen-2xl mx-auto px-8 flex flex-col lg:flex-row gap-8 lg:gap-20 text-lg">
+          <div className="max-w-screen-2xl mx-auto px-8 flex flex-col lg:flex-row gap-8 lg:gap-20 text-lg/8">
             {/* 左侧文本内容 */}
-            <div className="w-full lg:w-3/5 h-auto flex flex-col text-zinc-800 text-justify leading-relaxed space-y-4 opacity-10 ">
+            <div className="w-full lg:w-[60%] h-auto flex flex-col text-zinc-800 text-justify space-y-5">
               <p>
                 👋 嗨, 我是
-                <Highlighter action="underline" color="#87CEFA">
+                <Highlighter
+                  action="underline"
+                  color="#87CEFA"
+                  padding={2}
+                  animationDelay={500}
+                >
                   姜宇
                 </Highlighter>
                 ，一名产品设计师，同时也是开发爱好者。
@@ -142,24 +147,41 @@ export default function About() {
               </p>
               <p>
                 除去日常工作，我也在不断探索 “设计 + 技术”
-                的结合，这个个人网站就是我自己从设计到开发一步步折腾出来的，算是我对“全链路设计师”的一次尝试。未来也希望在设计和前端之间找到更多可能。
+                的结合，这个网站就是我自己从设计到开发一步步折腾出来的，算是我对“全链路设计师”的一次尝试。未来也希望在设计和前端之间找到更多可能。
               </p>
               <p>
                 当然对于设计的理解也在变化：一开始只是想把东西做得好看，后来慢慢关注交互体验，再到现在，更想要去创造价值
                 —— 让复杂的事变得简单，让冰冷的系统也能带点温度。
               </p>
               <p>
-                正如我很喜欢乔布斯的一句话 —— “People don’t know what they want
+                正如我很喜欢乔布斯的一句话：“People don’t know what they want
                 until you show it to them.”
                 设计师的使命不仅是回应需求，更是去创造还未被表达的可能性。
               </p>
+              <div>
+                通过标签快速认识我：
+                <div className="flex flex-wrap gap-3 mt-3">
+                  {[
+                    'B端产品设计',
+                    '设计体系',
+                    '动画动效',
+                    '三维建模',
+                    '前端开发',
+                    '云产品',
+                  ].map((tag) => (
+                    <span key={tag} className="tag">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* 右侧图片 */}
-            <div className="w-full lg:w-2/5 mx-auto md:mx-0 flex flex-col justify-center">
+            <div className="w-full lg:w-[40%] mx-auto md:mx-0 flex flex-col justify-start">
               <div className="w-full flex h-[480px] lg:h-[620px] rounded-3xl overflow-hidden items-center justify-center bg-gray-100">
                 <Image
-                  src="https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/notes/image14.jpg"
+                  src="https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/notes/image09.jpg"
                   alt="个人图片"
                   width={1600}
                   height={900}
