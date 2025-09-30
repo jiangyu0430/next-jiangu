@@ -1,4 +1,5 @@
 //右侧弹出菜单
+
 import React, { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 
@@ -14,7 +15,6 @@ export interface StaggeredMenuSocialItem {
 export interface StaggeredMenuProps {
   position?: 'left' | 'right'
   colors?: string[]
-  items?: StaggeredMenuItem[]
   socialItems?: StaggeredMenuSocialItem[]
   displaySocials?: boolean
   displayItemNumbering?: boolean
@@ -28,15 +28,22 @@ export interface StaggeredMenuProps {
   onMenuClose?: () => void
 }
 
+const defaultItems: StaggeredMenuItem[] = [
+  { label: '首页', ariaLabel: '首页', link: '/' },
+  { label: '项目集', ariaLabel: '项目集', link: '/projects' },
+  { label: '随手记', ariaLabel: '随手记', link: '/notes' },
+  { label: '关于我', ariaLabel: '关于我', link: '/about' },
+  { label: '联系我', ariaLabel: '联系我', link: '/contact' },
+]
+
 export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   position = 'right',
   colors = ['#B19EEF', '#5227FF'],
-  items = [],
   socialItems = [],
   displaySocials = true,
   displayItemNumbering = true,
   className,
-  logoUrl = '/src/assets/logos/reactbits-gh-white.svg',
+  logoUrl = '/logo.svg',
   menuButtonColor = '#fff',
   openMenuButtonColor = '#fff',
   changeMenuColorOnOpen = true,
@@ -57,7 +64,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
   const textInnerRef = useRef<HTMLSpanElement | null>(null)
   const textWrapRef = useRef<HTMLSpanElement | null>(null)
-  const [textLines, setTextLines] = useState<string[]>(['Menu', 'Close'])
+  const [textLines, setTextLines] = useState<string[]>(['菜单', '关闭'])
 
   const openTlRef = useRef<gsap.core.Timeline | null>(null)
   const closeTweenRef = useRef<gsap.core.Tween | null>(null)
@@ -349,14 +356,17 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
     textCycleAnimRef.current?.kill()
 
-    const currentLabel = opening ? 'Menu' : 'Close'
-    const targetLabel = opening ? 'Close' : 'Menu'
+    // Use Chinese labels for menu
+    const MENU_LABEL = '菜单'
+    const CLOSE_LABEL = '关闭'
+    const currentLabel = opening ? MENU_LABEL : CLOSE_LABEL
+    const targetLabel = opening ? CLOSE_LABEL : MENU_LABEL
     const cycles = 3
 
     const seq: string[] = [currentLabel]
     let last = currentLabel
     for (let i = 0; i < cycles; i++) {
-      last = last === 'Menu' ? 'Close' : 'Menu'
+      last = last === MENU_LABEL ? CLOSE_LABEL : MENU_LABEL
       seq.push(last)
     }
     if (last !== targetLabel) seq.push(targetLabel)
@@ -450,7 +460,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             aria-label="Logo"
           >
             <img
-              src={logoUrl || '/src/assets/logos/reactbits-gh-white.svg'}
+              src={logoUrl || '/logo.svg'}
               alt="Logo"
               className="sm-logo-img block h-8 w-auto object-contain"
               draggable={false}
@@ -518,36 +528,23 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
               role="list"
               data-numbering={displayItemNumbering || undefined}
             >
-              {items && items.length ? (
-                items.map((it, idx) => (
-                  <li
-                    className="sm-panel-itemWrap relative overflow-hidden leading-none"
-                    key={it.label + idx}
-                  >
-                    <a
-                      className="sm-panel-item relative text-black font-semibold text-[4rem] cursor-pointer leading-none tracking-[-2px] uppercase transition-[background,color] duration-150 ease-linear inline-block no-underline pr-[1.4em]"
-                      href={it.link}
-                      aria-label={it.ariaLabel}
-                      data-index={idx + 1}
-                    >
-                      <span className="sm-panel-itemLabel inline-block [transform-origin:50%_100%] will-change-transform">
-                        {it.label}
-                      </span>
-                    </a>
-                  </li>
-                ))
-              ) : (
+              {defaultItems.map((it, idx) => (
                 <li
                   className="sm-panel-itemWrap relative overflow-hidden leading-none"
-                  aria-hidden="true"
+                  key={it.label + idx}
                 >
-                  <span className="sm-panel-item relative text-black font-semibold text-[4rem] cursor-pointer leading-none tracking-[-2px] uppercase transition-[background,color] duration-150 ease-linear inline-block no-underline pr-[1.4em]">
+                  <a
+                    className="sm-panel-item relative text-black font-semibold text-[4rem] cursor-pointer leading-none tracking-[-2px] uppercase transition-[background,color] duration-150 ease-linear inline-block no-underline pr-[1.4em]"
+                    href={it.link}
+                    aria-label={it.ariaLabel}
+                    data-index={idx + 1}
+                  >
                     <span className="sm-panel-itemLabel inline-block [transform-origin:50%_100%] will-change-transform">
-                      No items
+                      {it.label}
                     </span>
-                  </span>
+                  </a>
                 </li>
-              )}
+              ))}
             </ul>
 
             {displaySocials && socialItems && socialItems.length > 0 && (

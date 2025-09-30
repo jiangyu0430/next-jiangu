@@ -107,7 +107,7 @@ export default function About() {
       )}
 
       {/* 简介区 */}
-      <section className="pt-25 pb-25 h-auto lg:h-screen lg:min-h-[1084px] bg-white  overflow-hidden rounded-b-3xl">
+      <section className="pt-25 pb-25 h-auto lg:h-screen lg:min-h-[1084px] bg-white overflow-hidden rounded-b-3xl">
         <FadeInWhenVisible delay={0.1} forceVisible={true} once>
           <div className="text-6xl font-bold max-w-screen-2xl mx-auto px-8 mb-10 text-center md:text-left">
             关于我
@@ -179,7 +179,7 @@ export default function About() {
 
             {/* 右侧图片 */}
             <div className="w-full lg:w-[40%] mx-auto md:mx-0 flex flex-col justify-start">
-              <div className="w-full flex h-[480px] lg:h-[620px] rounded-3xl overflow-hidden items-center justify-center bg-gray-100">
+              <div className="w-full flex h-[480px] lg:h-[620px] rounded-2xl overflow-hidden items-center justify-center bg-gray-100">
                 <Image
                   src="https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/notes/image09.jpg"
                   alt="个人图片"
@@ -246,9 +246,9 @@ export default function About() {
           </ScrollRevealTitle>
 
           {/* 栅格内容 */}
-          <div className="mt-25 grid grid-cols-4 border-y border-white/15 h-240 gap-x-0 gap-y-0 text-white">
+          <div className="mt-25 grid grid-cols-2 lg:grid-cols-4 border-t border-white/15 h-240 gap-x-0 gap-y-0 text-white">
             {/* 1卡片 */}
-            <div className="relative flex flex-col gap-12 items-start justify-end border-r-1 border-b-1 border-white/15 h-full p-16">
+            <div className="card-grid">
               <div className="flex items-baseline text-5xl">
                 <CountUp
                   from={0}
@@ -271,10 +271,10 @@ export default function About() {
                 </p>
               </div>
             </div>
-            <div className="relative border-r-1 border-b-1 border-white/15 h-full"></div>
+            <div className="card-grid"></div>
 
             {/* 3卡片 */}
-            <div className="relative flex flex-col gap-12 items-start justify-end border-r-1 border-b-1 border-white/15 h-full p-16">
+            <div className="card-grid">
               <div className="flex items-baseline text-5xl">
                 <CountUp
                   from={0}
@@ -297,11 +297,11 @@ export default function About() {
                 </p>
               </div>
             </div>
-            <div className="relative border-r-1 border-b-1 border-white/15 h-full"></div>
-            <div className="relative border-r-1 border-white/15 h-full"></div>
+            <div className="card-grid"></div>
+            <div className="card-grid"></div>
 
             {/* 5卡片 */}
-            <div className="relative flex flex-col gap-12 items-start justify-end border-r-1 border-white/15 h-full p-16">
+            <div className="card-grid">
               <div className="flex items-baseline text-5xl">
                 <CountUp
                   from={0}
@@ -324,10 +324,10 @@ export default function About() {
                 </p>
               </div>
             </div>
-            <div className="relative border-r-1 border-white/15 h-full"></div>
+            <div className="card-grid"></div>
 
             {/* 8卡片 */}
-            <div className="relative flex flex-col gap-12 items-start justify-end border-r-1 border-white/15 h-full p-16">
+            <div className="card-grid">
               <div className="flex items-baseline text-5xl">
                 <CountUp
                   from={0}

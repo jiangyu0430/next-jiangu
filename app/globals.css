@@ -150,3 +150,9 @@ html.dark ::selection {
 .tag {
   @apply px-4 py-1 rounded-[6px] bg-zinc-100 text-zinc-900 text-[15px]/7 transition-transform duration-300 hover:-translate-y-1;
 }
+
+/* 我的页globals.css */
+.card-grid {
+  @apply relative flex flex-col gap-12 items-start justify-end 
+         h-full p-16 border-r border-b border-white/15;
+}

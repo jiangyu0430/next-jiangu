@@ -51,7 +51,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
       </div>
       {description && (
         <p
-          className={`w-[460px] lg:text-xl text-base mt-6 leading-[1.5] ${
+          className={`w-full lg:w-[460px] lg:text-xl text-base mt-6 leading-[1.5] ${
             theme === 'light' ? 'text-zinc-700' : 'text-white/80'
           }`}
         >

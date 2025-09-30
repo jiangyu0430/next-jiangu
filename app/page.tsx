@@ -135,10 +135,18 @@ function Home() {
                 objectFit: 'fill',
                 objectPosition: '50% 50%',
                 pointerEvents: 'none',
-                cursor: 'inherit',
+                cursor: 'url(/cursor-black.png), auto', // 🔑 直接在视频上设置光标
                 willChange: 'transform, opacity',
               }}
             />
+          </div>
+          <div className="absolute bottom-24 inset-x-0 z-10">
+            <div
+              className="max-w-screen-2xl mx-auto px-4 sm:px-8 text-white text-lg sm:text-2xl font-semibold drop-shadow-lg"
+              style={{ pointerEvents: 'none' }}
+            >
+              这里是视频左下角的文本
+            </div>
           </div>
         </div>
       </section>
