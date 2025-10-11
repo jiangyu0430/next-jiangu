@@ -8,7 +8,10 @@ import FadeInWhenVisible from '@/components/FadeInWhenVisible'
 import { useEffect, useState, FormEvent, useRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
+import usePageTitle from '@/hooks/usePageTitle'
+
 export default function ContactPage() {
+  usePageTitle('联系我丨JIANGYU')
   const [state, handleSubmit] = useForm('mvgbjrqk')
   const [isFormValid, setIsFormValid] = useState(false)
   const [isEmailInvalid, setIsEmailInvalid] = useState(false)

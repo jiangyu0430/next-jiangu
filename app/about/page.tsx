@@ -23,6 +23,8 @@ import behanceAnimation from '@/public/Lottie/behance.json'
 import dribbbleAnimation from '@/public/Lottie/dribbble.json'
 import twitterAnimation from '@/public/Lottie/twitter.json'
 
+import usePageTitle from '@/hooks/usePageTitle'
+
 // 工具函数：计算从指定年月到当前日期的年份数（四舍五入取整）
 function calculateYearsSinceRounded(year: number, month: number): number {
   const now = new Date()
@@ -33,6 +35,7 @@ function calculateYearsSinceRounded(year: number, month: number): number {
 }
 
 export default function About() {
+  usePageTitle('关于我丨JIANGYU')
   const [message, setMessage] = useState<string | null>(null)
   const [visible, setVisible] = useState(false)
   const contactRef = useRef<HTMLDivElement>(null)
@@ -226,7 +229,7 @@ export default function About() {
         {/* 背景图片 */}
         <motion.div
           className="absolute inset-0 w-full h-full will-change-transform"
-          style={{ scale: workScale, y: -220 }}
+          style={{ scale: workScale, y: -120 }}
         >
           <Image
             src="https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/WorkExperience_bg.webp"
@@ -271,7 +274,8 @@ export default function About() {
                 </p>
               </div>
             </div>
-            <div className="card-grid"></div>
+            {/* 2卡片（移动端隐藏） */}
+            <div className="!hidden lg:!flex card-grid"></div>
 
             {/* 3卡片 */}
             <div className="card-grid">
@@ -297,10 +301,12 @@ export default function About() {
                 </p>
               </div>
             </div>
-            <div className="card-grid"></div>
-            <div className="card-grid"></div>
+            {/* 4卡片（移动端隐藏） */}
+            <div className="!hidden lg:!flex card-grid"></div>
+            {/* 5卡片（移动端隐藏） */}
+            <div className="!hidden lg:!flex card-grid"></div>
 
-            {/* 5卡片 */}
+            {/* 6卡片 */}
             <div className="card-grid">
               <div className="flex items-baseline text-5xl">
                 <CountUp
@@ -324,7 +330,8 @@ export default function About() {
                 </p>
               </div>
             </div>
-            <div className="card-grid"></div>
+            {/* 7卡片（移动端隐藏） */}
+            <div className="!hidden lg:!flex card-grid"></div>
 
             {/* 8卡片 */}
             <div className="card-grid">
@@ -400,14 +407,14 @@ export default function About() {
                   <div
                     className={`absolute w-screen left-1/2 -translate-x-1/2 ${bgColor} h-full top-0 bottom-0 z-0`}
                   />
-                  <div className="max-w-screen-2xl mx-auto px-8 py-7 relative z-10 flex justify-between text-4xl font-medium items-center overflow-hidden">
+                  <div className="max-w-screen-2xl mx-auto px-8 py-7 relative z-10 flex justify-between text-2xl lg:text-4xl font-medium items-center overflow-hidden">
                     <div className="flex flex-1 items-end">
                       <div className="w-1/3 text-black">{text}</div>
                       <div className="w-1/2 ">{position}</div>
                     </div>
                     <div className="absolute right-8 top-5 flex flex-col items-end overflow-hidden">
                       <span
-                        className={`text-8xl font-Oswald bg-gradient-to-t from-white/0 to-white/80 bg-clip-text text-transparent transition-transform duration-500 delay-300 group-hover:-translate-y-24 ${
+                        className={`text-6xl lg:text-8xl font-Oswald bg-gradient-to-t from-white/0 to-white/80 bg-clip-text text-transparent transition-transform duration-500 delay-300 group-hover:-translate-y-24 ${
                           number === '01' ? 'tracking-wider' : ''
                         }`}
                       >

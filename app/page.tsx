@@ -142,10 +142,10 @@ function Home() {
           </div>
           <div className="absolute bottom-24 inset-x-0 z-10">
             <div
-              className="max-w-screen-2xl mx-auto px-4 sm:px-8 text-white text-lg sm:text-2xl font-semibold drop-shadow-lg"
+              className="max-w-screen-2xl mx-auto px-4 sm:px-8 text-white/80 text-lg sm:text-2xl drop-shadow-lg"
               style={{ pointerEvents: 'none' }}
             >
-              这里是视频左下角的文本
+              Simplify complexity into clear and enjoyable design results
             </div>
           </div>
         </div>

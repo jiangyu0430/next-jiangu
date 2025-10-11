@@ -8,8 +8,10 @@ import { motion } from 'framer-motion'
 import { AnimatedThemeToggler } from '@/components/ThemeToggler'
 import FadeInWhenVisible from '@/components/FadeInWhenVisible'
 import ReactMarkdown from 'react-markdown'
+import remarkBreaks from 'remark-breaks'
 import ContentPlaceholder from '@/components/ContentPlaceholder'
 import { notFound } from 'next/navigation'
+import VideoPlayer from '@/components/VideoPlayer'
 
 export default function ProjectDetailPage() {
   const router = useRouter()
@@ -264,32 +266,44 @@ export default function ProjectDetailPage() {
                 <ReactMarkdown
                   components={{
                     p: ({ node, children, ...props }) => {
-                      if (
-                        node?.children &&
-                        node.children.length === 1 &&
-                        node.children[0].type === 'element' &&
-                        node.children[0].tagName === 'img'
-                      ) {
-                        const imgNode = node.children[0]
-                        const src = imgNode.properties.src as string
-                        const alt = imgNode.properties.alt as string | undefined
-                        return (
-                          <div className="my-6 w-full">
-                            <Image
-                              src={src}
-                              alt={alt || ''}
-                              width={0}
-                              height={0}
-                              sizes="100vw"
-                              style={{ width: '100%', height: 'auto' }}
-                              className="rounded"
-                              loading="lazy"
-                            />
-                          </div>
-                        )
+                      const childrenNodes = node?.children || []
+
+                      // If all children are images or videos, unwrap <p> and remove <br>
+                      const allImagesOrVideos = childrenNodes.every(
+                        (child: any) =>
+                          child.tagName === 'img' || child.tagName === 'video'
+                      )
+
+                      if (allImagesOrVideos) {
+                        return <>{children}</>
                       }
+
                       return <p {...props}>{children}</p>
                     },
+                    img: ({ node, ...props }) => {
+                      const src = props.src || ''
+                      const alt = props.alt || ''
+
+                      if (src.endsWith('.mp4')) {
+                        return <VideoPlayer src={src} />
+                      }
+
+                      return (
+                        <span className="my-6 block w-full">
+                          <Image
+                            src={src}
+                            alt={alt || ''}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: '100%', height: 'auto' }}
+                            className="rounded-md"
+                            loading="lazy"
+                          />
+                        </span>
+                      )
+                    },
+                    br: () => null, // Remove <br> tags to prevent extra spacing
                   }}
                 >
                   {markdownContent}

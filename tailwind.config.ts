@@ -70,7 +70,7 @@ export default {
             h2: { marginTop: '2.5rem', marginBottom: '1.5rem' },
             h3: { marginTop: '2rem', marginBottom: '1rem' },
             h4: { marginTop: '1.5rem', marginBottom: '1rem' },
-            ul: { marginTop: '0.5rem', marginBottom: '0.5rem' },
+            ul: { marginTop: '0.2rem', marginBottom: '0.2rem' },
             ol: { marginTop: '0.5rem', marginBottom: '0.5rem' },
           },
         },

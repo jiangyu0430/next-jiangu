@@ -18,7 +18,7 @@ export default function ScrollRevealTitle({
   children, // 需要进行滚动显示的子元素
   offsetY = -500, // 元素初始的垂直位移，负值表示向上偏移
   initialScale = 1.3, // 元素初始缩放值
-  scrollDistance = 180, // 元素完成动画所需的滚动距离（单位：px）
+  scrollDistance = 228, // 元素完成动画所需的滚动距离（单位：px）
   enableScale = true, // 是否启用缩放效果
 }: ScrollRevealTitleProps): JSX.Element {
   const containerRef = useRef<HTMLDivElement | null>(null)
