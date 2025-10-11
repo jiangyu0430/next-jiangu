@@ -7,7 +7,7 @@ export async function generateMetadata({ params }: any) {
   const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug
   const project = projects.find((p) => p.slug === slug)
   return {
-    title: project ? `${project.title} 丨 JiangYu` : 'JiangYu',
+    title: project ? `${project.title} 丨 JIANGYU` : 'JIANGYU',
   }
 }
 

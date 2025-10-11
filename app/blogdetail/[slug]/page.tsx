@@ -12,6 +12,7 @@ import remarkBreaks from 'remark-breaks'
 import ContentPlaceholder from '@/components/ContentPlaceholder'
 import { notFound } from 'next/navigation'
 import VideoPlayer from '@/components/VideoPlayer'
+import usePageTitle from '@/hooks/usePageTitle'
 
 export default function ProjectDetailPage() {
   const router = useRouter()
@@ -119,6 +120,7 @@ export default function ProjectDetailPage() {
   const [imageLoaded, setImageLoaded] = useState(false)
 
   const project: Blog | undefined = blogs.find((p) => p.slug === slug)
+  usePageTitle(project ? `${project.title}丨JIANGYU` : 'JIANGYU')
 
   // 读取 markdown 内容
   const [markdownContent, setMarkdownContent] = useState<string | null>(null)

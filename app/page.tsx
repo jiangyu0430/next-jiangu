@@ -20,8 +20,10 @@ import Image from 'next/image'
 import { notesItems } from '@/data/notes'
 import projects from '@/data/projects'
 import blogs from '@/data/blogs'
+import usePageTitle from '@/hooks/usePageTitle'
 
 function Home() {
+  usePageTitle('JIANGYU')
   const videoRef = useRef<HTMLVideoElement>(null)
   const [svgOffset, setSvgOffset] = useState(0)
   const svgRef = useRef<HTMLImageElement>(null)

@@ -13,6 +13,8 @@ import lgZoom from 'lightgallery/plugins/zoom'
 import lgThumbnail from 'lightgallery/plugins/thumbnail'
 import lgVideo from 'lightgallery/plugins/video'
 
+import usePageTitle from '@/hooks/usePageTitle'
+
 type GalleryItem = {
   src?: string
   thumb: string
@@ -25,6 +27,7 @@ type GalleryItem = {
 }
 
 export default function Notes() {
+  usePageTitle('随手记丨JIANGYU')
   const [columnCount, setColumnCount] = useState<number>(4)
   const [visibleCount, setVisibleCount] = useState(20)
   const lightGalleryRef = useRef<any>(null)

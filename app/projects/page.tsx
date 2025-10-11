@@ -9,6 +9,7 @@ import { useRouter, usePathname } from 'next/navigation'
 
 import blogs from '@/data/blogs'
 import projects from '@/data/projects'
+import usePageTitle from '@/hooks/usePageTitle'
 
 interface Project {
   slug: string
@@ -22,6 +23,7 @@ interface Blog {
 }
 
 export default function Projects(): JSX.Element {
+  usePageTitle('项目集丨JIANGYU')
   const [activeType, setActiveType] = useState<string | null>(null)
   const router = useRouter()
   const pathname = usePathname()
