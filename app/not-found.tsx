@@ -5,9 +5,11 @@ import Link from 'next/link'
 import Lottie from 'lottie-react'
 import animationData from '../public/Lottie/404.json'
 import { InteractiveHoverButton } from '@/components/InteractiveHoverButton'
+import usePageTitle from '@/hooks/usePageTitle'
 
 export default function NotFound() {
   const router = useRouter()
+  usePageTitle('404丨JIANGYU')
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white rounded-b-3xl text-black px-4">

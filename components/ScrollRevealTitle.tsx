@@ -8,7 +8,7 @@ interface ScrollRevealTitleProps {
   offsetY?: number
   /** 元素初始缩放值 */
   initialScale?: number
-  /** 元素完成动画所需的滚动距离（单位：px） */
+  /** 元素完成动画所需的滚动距离（像素），默认等于 offsetY 的绝对值 */
   scrollDistance?: number
   /** 是否启用缩放效果 */
   enableScale?: boolean
@@ -16,9 +16,9 @@ interface ScrollRevealTitleProps {
 
 export default function ScrollRevealTitle({
   children, // 需要进行滚动显示的子元素
-  offsetY = -500, // 元素初始的垂直位移，负值表示向上偏移
-  initialScale = 1.3, // 元素初始缩放值
-  scrollDistance = 228, // 元素完成动画所需的滚动距离（单位：px）
+  offsetY = -380, // 元素初始的垂直位移，负值表示向上偏移
+  initialScale = 1.25, // 元素初始缩放值
+  scrollDistance = 60, // 元素完成动画所需的滚动距离（像素），默认固定为 250
   enableScale = true, // 是否启用缩放效果
 }: ScrollRevealTitleProps): JSX.Element {
   const containerRef = useRef<HTMLDivElement | null>(null)
@@ -40,10 +40,10 @@ export default function ScrollRevealTitle({
       if (!containerRef.current) return
       const rect = containerRef.current.getBoundingClientRect()
       const viewportHeight = window.innerHeight
-      const progress = Math.min(
-        Math.max((viewportHeight - rect.top) / scrollDistance, 0),
-        1
-      )
+      const effectiveScrollDistance = scrollDistance ?? Math.abs(offsetY)
+      const distanceFromBottom = viewportHeight - rect.bottom
+      const distanceScrolled = Math.max(distanceFromBottom, 0)
+      const progress = Math.min(distanceScrolled / effectiveScrollDistance, 1)
 
       const targetY = offsetY * (1 - progress)
       const roundedTargetY = round(targetY)

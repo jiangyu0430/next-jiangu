@@ -28,13 +28,13 @@ export default function FAQ({ items }: FAQProps) {
         return (
           <motion.div
             key={idx}
-            initial={{ y: 50, opacity: 0 }}
+            initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{
               duration: 0.6,
               ease: 'easeOut',
-              delay: 0.3 + idx * 0.02,
+              delay: 0.2 + idx * 0.02,
             }}
             className="border-b border-gray-200 cursor-pointer group"
             onClick={() => toggle(idx)}

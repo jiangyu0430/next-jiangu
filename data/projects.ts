@@ -33,7 +33,7 @@ const projects: Project[] = [
     date: '2023-06 – 2024-10',
     type: '设计系统',
     description:
-      'Redesigned a brand website with a focus on modern UI and accessibility.',
+      '随着业务不断发展，多个业务项目中不断复制、微调组件，效率低下且难以统一。为解决这一问题，Eris 诞生 — 一套从设计原则到开发落地的系统化方法，通过 Token 机制、组件模式库与跨端规范，让团队在高复用与高一致间找到平衡，推动设计协作更高效、有序地演进。',
     image: {
       wide: 'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/cover/eris3.webp',
       square:
@@ -70,6 +70,17 @@ const projects: Project[] = [
     tags: ['Design System', 'ByteDance', 'Components'],
   },
   {
+    slug: 'AIEducationAccompanies',
+    title: 'AI 教育陪伴 — 智能学习助手',
+    date: '2025-03 – 05',
+    type: 'UI/UX',
+    description:
+      'AI 教育陪伴项目旨在通过智能学习助手，为用户提供个性化的学习体验。个人参与主导的界面设计与交互优化，让复杂的学习数据在多维分析中更直观、高效地呈现，助力用户快速掌握知识，实现个性化学习。',
+    image:
+      'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/cover/K12.webp',
+    tags: ['Mobile', 'AI'],
+  },
+  {
     slug: 'dataVisualization',
     title: '智慧工厂 — 车间生产线数字孪生系统',
     date: '2022-11 – 12',
@@ -97,7 +108,7 @@ const projects: Project[] = [
     date: '2020-08',
     type: '动画动效',
     description:
-      '探索 TabBar 在轻量界面中的动效表现：指示条滑动、颜色过渡、状态切换节奏等，尝试将这些动态反馈融入常见组件的设计中，为界面注入更鲜活的节奏与视觉生命力。',
+      '信息爆炸的今天，人们的注意力越来越分散、难以集中，在一次次向下滑动的手势中，保证内容的运动，是夺得观众注意力的第一选择。优秀的动效设计之所以能辅助品牌的塑造与传播，最主要原因在于，清晰地使用动效设计以扩展品牌的叙事空间。',
     image:
       'https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/project/cover/page_animation.webp',
     tags: ['AE', 'Motion'],

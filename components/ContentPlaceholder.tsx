@@ -18,7 +18,7 @@ const ContentPlaceholder: React.FC<ContentPlaceholderProps> = ({ type }) => {
       <div className="w-40 h-30  flex items-center justify-center">
         <Lottie animationData={animation} loop={true} />
       </div>
-      <div className="text-gray-400 text-lg">{message}</div>
+      <div className="text-gray-700 dark:text-zinc-300 text-lg">{message}</div>
     </div>
   )
 }

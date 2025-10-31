@@ -15,6 +15,7 @@ import ScrollRevealTitle from '@/components/ScrollRevealTitle'
 import { ResponsiveCardLayout } from '@/components/CardLayout'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
+import { TextAnimate } from '@/components/TextAnimate'
 
 // Data
 import { notesItems } from '@/data/notes'
@@ -39,6 +40,10 @@ function Home() {
   const rotate = useTransform(scrollYProgress, [0, 0.6], [20, 0])
   const rotateX = useTransform(scrollYProgress, [0, 0.6], [27, 0])
   const rotateY = useTransform(scrollYProgress, [0, 0.6], [-54, 0])
+
+  const { scrollY } = useScroll()
+  // For hero section text: start effect only after 640px scroll
+  const bottom = useTransform(scrollY, [640, 1600], [96, -200])
 
   useEffect(() => {
     const videoEl = videoRef.current
@@ -102,7 +107,7 @@ function Home() {
         <Navbar2 />
       </div>
       {/* Hero Section */}
-      <section className="h-screen w-full flex items-center px-4 sm:px-8 text-left overflow-hidden relative cursor-default">
+      <section className="h-screen min-h-[720px] w-full flex items-center px-4 sm:px-8 text-left overflow-hidden relative cursor-default">
         <div
           className="absolute inset-0 z-0"
           style={{
@@ -142,16 +147,28 @@ function Home() {
               }}
             />
           </div>
-          <div className="absolute bottom-24 inset-x-0 z-10">
-            <div
-              className="max-w-screen-2xl mx-auto px-4 sm:px-8 text-white/80 text-lg sm:text-2xl drop-shadow-lg"
-              style={{ pointerEvents: 'none' }}
-            >
-              Simplify complexity into clear and enjoyable design results
+          <motion.div
+            className="absolute inset-x-0 z-10 flex flex-col items-start lg:flex-row lg:justify-between lg:items-start max-w-screen-2xl mx-auto px-4 sm:px-8 text-zinc-200 text-lg sm:text-xl"
+            style={{ bottom, mixBlendMode: 'difference' }}
+          >
+            {/* 左侧文本 */}
+            <div className="w-full lg:w-160 leading-8">
+              <TextAnimate animation="slideLeft" by="character" delay={0.3}>
+                —
+                从概念到原型，从视觉到交互，将复杂的产品问题拆解为清晰、可操作的设计方案；创造愉悦的用户体验，让每一次点击都充满意义。
+              </TextAnimate>
             </div>
-          </div>
+
+            {/* 右侧列文本 */}
+            <div className="flex flex-col gap-2 text-left lg:text-right mt-8 lg:ml-8 lg:mt-0">
+              <TextAnimate animation="fadeIn" by="line" as="p" delay={0.2}>
+                {`UX/UI Design\n\nWeb Development\n\nMotion Animation\n\n3D Prototyping`}
+              </TextAnimate>
+            </div>
+          </motion.div>
         </div>
       </section>
+
       {/* 个人信息 */}
       <section className="bg-zinc-100 py-20 lg:py-40 rounded-3xl relative overflow-hidden">
         {/* 顶部 SVG */}
