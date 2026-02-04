@@ -185,7 +185,7 @@ export default function About() {
             <div className="w-full lg:w-[40%] mx-auto md:mx-0 flex flex-col justify-start">
               <div className="w-full flex h-[480px] lg:h-[620px] rounded-2xl overflow-hidden items-center justify-center bg-gray-100">
                 <Image
-                  src="https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/notes/image09.jpg"
+                  src="https://my-image-assets-1310694312.cos.ap-guangzhou.myqcloud.com/myphoto.webp"
                   alt="个人图片"
                   width={1600}
                   height={900}
