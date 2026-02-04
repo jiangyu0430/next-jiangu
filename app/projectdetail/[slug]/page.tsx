@@ -5,6 +5,7 @@ import { PROJECT_IMAGE_MAP } from '../../../data/content/projectImages'
 import { notFound } from 'next/navigation'
 import usePageTitle from '@/hooks/usePageTitle'
 import Image from 'next/image'
+import ResponsiveImage from '@/components/ResponsiveImage'
 import { useRef, useEffect, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { AnimatedThemeToggler } from '@/components/ThemeToggler'
@@ -410,27 +411,12 @@ export default function ProjectDetailClient({ params }: any) {
                           containerRefs.current[index] = el
                         }}
                       >
-                        <Image
-                          src={`${projectContent.baseUrl}${fileName}-2880.webp`}
+                        <ResponsiveImage
+                          baseUrl={projectContent.baseUrl}
+                          fileName={fileName}
                           alt={`Project image ${index + 1}`}
-                          fill
-                          sizes="(max-width: 600px) 600px,
-                               (max-width: 1440px) 1440px,
-                               (max-width: 1920px) 1920px,
-                               100vw"
                           priority={index < 2}
                           className="object-cover"
-                          onLoad={(e) => {
-                            const img = e.currentTarget
-                            const ratio = img.naturalWidth / img.naturalHeight
-                            const container = containerRefs.current[index]
-                            if (container) {
-                              if (Math.abs(ratio - 16 / 9) > 0.05) {
-                                container.style.paddingBottom = ''
-                                container.classList.remove('aspect-video')
-                              }
-                            }
-                          }}
                         />
                       </div>
                     )
@@ -452,6 +438,10 @@ export default function ProjectDetailClient({ params }: any) {
                       </div>
                     )
                   } else if (content.type === 'image') {
+                    const fileName = (content.src || '').replace(
+                      /\.(webp|jpg|jpeg|png)$/i,
+                      ''
+                    )
                     return (
                       <div
                         key={index}
@@ -460,34 +450,12 @@ export default function ProjectDetailClient({ params }: any) {
                           containerRefs.current[index] = el
                         }}
                       >
-                        <Image
-                          src={
-                            typeof content.src === 'string'
-                              ? content.src.replace(
-                                  /\.(webp|jpg|jpeg|png)$/i,
-                                  ''
-                                ) + '-2880.webp'
-                              : content.src!
-                          }
+                        <ResponsiveImage
+                          baseUrl={projectContent.baseUrl}
+                          fileName={fileName}
                           alt={content.alt || `Project image ${index + 1}`}
-                          fill
-                          sizes="(max-width: 600px) 600px,
-                               (max-width: 1440px) 1440px,
-                               (max-width: 1920px) 1920px,
-                               100vw"
                           priority={index < 2}
                           className="object-cover"
-                          onLoad={(e) => {
-                            const img = e.currentTarget
-                            const ratio = img.naturalWidth / img.naturalHeight
-                            const container = containerRefs.current[index]
-                            if (container) {
-                              if (Math.abs(ratio - 16 / 9) > 0.05) {
-                                container.style.paddingBottom = ''
-                                container.classList.remove('aspect-video')
-                              }
-                            }
-                          }}
                         />
                       </div>
                     )

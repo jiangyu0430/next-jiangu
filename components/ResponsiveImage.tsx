@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { useMemo, useRef, useState, useEffect } from 'react'
 
 interface ResponsiveImageProps {
   baseUrl: string
   fileName: string
   alt: string
   priority?: boolean
-  index?: number
   className?: string
 }
 
@@ -14,31 +13,53 @@ export default function ResponsiveImage({
   fileName,
   alt,
   priority = false,
-  index = 0,
   className = '',
 }: ResponsiveImageProps) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [isVisible, setIsVisible] = useState(priority)
+
+  useEffect(() => {
+    if (priority) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      {
+        rootMargin: '200px', // ✅ 提前200px加载，滚动更平滑
+      }
+    )
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [priority])
+
+  const selectedSize = useMemo(() => {
+    if (typeof window === 'undefined') return 1920 // SSR fallback
+    const deviceWidth = window.innerWidth * window.devicePixelRatio
+    const sizes = [600, 1440, 1920, 2880]
+    return sizes.find((w) => w >= deviceWidth) || sizes[sizes.length - 1]
+  }, [])
+
   return (
-    <picture>
-      <source
-        type="image/webp"
-        srcSet={`
-          ${baseUrl}${fileName}-600.webp 600w,
-          ${baseUrl}${fileName}-1440.webp 1440w,
-          ${baseUrl}${fileName}-1920.webp 1920w,
-          ${baseUrl}${fileName}-2880.webp 2880w
-        `}
-        sizes="(max-width: 600px) 600px,
-               (max-width: 1440px) 1440px,
-               (max-width: 1920px) 1920px,
-               100vw"
-      />
-      <img
-        src={`${baseUrl}${fileName}-1920.webp`}
-        alt={alt}
-        loading={priority ? 'eager' : 'lazy'}
-        decoding="async"
-        className={`object-cover w-full h-auto ${className}`}
-      />
-    </picture>
+    <div ref={ref} className="w-full h-auto">
+      {isVisible && (
+        <picture>
+          <source
+            type="image/webp"
+            srcSet={`${baseUrl}${fileName}-${selectedSize}.webp`}
+            sizes="100vw"
+          />
+          <img
+            src={`${baseUrl}${fileName}-${selectedSize}.webp`}
+            alt={alt}
+            loading={priority ? 'eager' : 'lazy'}
+            decoding="async"
+            className={`object-cover w-full h-auto ${className}`}
+          />
+        </picture>
+      )}
+    </div>
   )
 }

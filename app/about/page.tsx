@@ -76,7 +76,7 @@ export default function About() {
     },
     {
       id: 3,
-      text: 'ABCDEF',
+      text: 'DSTcar',
       number: '03',
       position: 'Product designer',
       bgColor: 'bg-indigo-300',
@@ -130,7 +130,7 @@ export default function About() {
                 >
                   姜宇
                 </Highlighter>
-                ，一名产品设计师，同时也是开发爱好者。
+                ，一名产品设计师，同时也是 AI 爱好者。
               </p>
               <p>
                 1997
@@ -166,6 +166,7 @@ export default function About() {
                 <div className="flex flex-wrap gap-3 mt-3">
                   {[
                     'B端产品设计',
+                    'AI 协作',
                     '设计体系',
                     '动画动效',
                     '三维建模',
@@ -265,12 +266,10 @@ export default function About() {
                 +
               </div>
               <div className="text-zinc-300">
-                <p className="text-xl font-medium text-white mb-4">
-                  precision.
-                </p>
+                <p className="text-xl font-medium text-white mb-4">工作经验</p>
                 <p>
-                  Across web, product, and identity — each one built with care
-                  and
+                  深耕 UI/UX 设计领域 {calculateYearsSinceRounded(2020, 4)}{' '}
+                  年，积淀全链路设计能力，完成从执行到落地的专业能力闭环
                 </p>
               </div>
             </div>
@@ -282,7 +281,7 @@ export default function About() {
               <div className="flex items-baseline text-5xl">
                 <CountUp
                   from={0}
-                  to={calculateYearsSinceRounded(2020, 4)}
+                  to={25}
                   direction="up"
                   duration={0.1}
                   delay={0.2}
@@ -292,12 +291,10 @@ export default function About() {
                 +
               </div>
               <div className="text-zinc-300">
-                <p className="text-xl font-medium text-white mb-4">
-                  precision.
-                </p>
+                <p className="text-xl font-medium text-white mb-4">参与项目</p>
                 <p>
-                  Across web, product, and identity — each one built with care
-                  and
+                  深度参与 25 +
+                  各类设计项目，覆盖多业务场景，锤炼全流程项目把控与落地能力
                 </p>
               </div>
             </div>
@@ -311,7 +308,7 @@ export default function About() {
               <div className="flex items-baseline text-5xl">
                 <CountUp
                   from={0}
-                  to={calculateYearsSinceRounded(2020, 4)}
+                  to={400}
                   direction="up"
                   duration={0.1}
                   delay={0.2}
@@ -321,12 +318,10 @@ export default function About() {
                 +
               </div>
               <div className="text-zinc-300">
-                <p className="text-xl font-medium text-white mb-4">
-                  precision.
-                </p>
+                <p className="text-xl font-medium text-white mb-4">设计需求</p>
                 <p>
-                  Across web, product, and identity — each one built with care
-                  and
+                  高效落地 400 +
+                  设计需求，兼顾设计质量与交付效率，夯实全维度设计执行功底
                 </p>
               </div>
             </div>
@@ -338,22 +333,22 @@ export default function About() {
               <div className="flex items-baseline text-5xl">
                 <CountUp
                   from={0}
-                  to={43}
+                  to={98}
                   direction="up"
                   duration={0.2}
                   delay={0.2}
                   once={false}
                   className="count-up-text text-9xl font-Oswald"
                 />
-                +
+                %
               </div>
               <div className="text-zinc-300">
                 <p className="text-xl font-medium text-white mb-4">
-                  precision.
+                  伙伴满意度
                 </p>
                 <p>
-                  Across web, product, and identity — each one built with care
-                  and
+                  凭借专业交付与高效协作，达成 98%
+                  合作伙伴满意度，树立良好的跨方合作口碑
                 </p>
               </div>
             </div>
@@ -409,7 +404,7 @@ export default function About() {
                   />
                   <div className="max-w-screen-2xl mx-auto px-8 py-7 relative z-10 flex justify-between text-2xl lg:text-4xl font-medium items-center overflow-hidden">
                     <div className="flex flex-1 items-end">
-                      <div className="w-1/3 text-black">{text}</div>
+                      <div className="w-2/5 text-black">{text}</div>
                       <div className="w-1/2 ">{position}</div>
                     </div>
                     <div className="absolute right-8 top-5 flex flex-col items-end overflow-hidden">
@@ -426,7 +421,7 @@ export default function About() {
                     </div>
                   </div>
                 </div>
-              )
+              ),
             )}
           </div>
         </div>

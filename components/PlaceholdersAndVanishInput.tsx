@@ -72,7 +72,7 @@ export const PlaceholdersAndVanishInput: React.FC<
     ctx.fillText(
       value,
       offsetX,
-      parseFloat(computedStyles.getPropertyValue('font-size')) * 1.74
+      parseFloat(computedStyles.getPropertyValue('font-size')) * 1.74,
     )
 
     const imageData = ctx.getImageData(0, 0, 800, 800)
@@ -180,7 +180,7 @@ export const PlaceholdersAndVanishInput: React.FC<
 
     const maxX = newDataRef.current.reduce(
       (prev, current) => (current.x > prev ? current.x : prev),
-      0
+      0,
     )
 
     animate(maxX) // 优先执行动画
@@ -191,7 +191,7 @@ export const PlaceholdersAndVanishInput: React.FC<
         'service_w7mvxra', // Service ID
         'template_c030xec', // Template ID
         { message },
-        'aeWjgdLCNcUfQ08oQ' // Public Key
+        'aeWjgdLCNcUfQ08oQ', // Public Key
       )
       .then((result) => {
         console.log('Email successfully sent:', result.text)
@@ -206,13 +206,13 @@ export const PlaceholdersAndVanishInput: React.FC<
       onSubmit={(e) => e.preventDefault()}
       className={cn(
         'w-full relative max-w-full mx-auto bg-zinc-800 h-14 rounded-lg overflow-hidden  transition duration-200',
-        value && 'bg-zinc-800'
+        value && 'bg-zinc-800',
       )}
     >
       <canvas
         className={cn(
           'absolute pointer-events-none text-base transform scale-50 top-[20px] left-6 origin-top-left filter invert-0 pr-20',
-          !animating ? 'opacity-0' : 'opacity-100'
+          !animating ? 'opacity-0' : 'opacity-100',
         )}
         ref={canvasRef}
       />
@@ -230,7 +230,7 @@ export const PlaceholdersAndVanishInput: React.FC<
         className={cn(
           'w-full relative text-base z-50 border-none text-white bg-transparent h-full rounded-full focus:outline-none focus:ring-0 pl-6 sm:pl-6 text-left pr-20',
           animating && 'text-transparent',
-          'caret-white'
+          'caret-white',
         )}
         style={{
           transition: 'opacity 0.5s linear',
@@ -241,7 +241,7 @@ export const PlaceholdersAndVanishInput: React.FC<
         disabled={!value}
         type="button"
         onClick={vanishAndSubmit}
-        className="absolute right-4 top-1/2 z-50 -translate-y-1/2 h-8 w-8 rounded-full bg-zinc-50 hover:bg-zinc-100 disabled:bg-zinc-800 transition duration-200 flex items-center justify-center"
+        className="absolute right-4 top-1/2 z-50 -translate-y-1/2 h-8 w-8 rounded-full bg-zinc-50 hover:bg-zinc-100 disabled:bg-zinc-800 transition duration-200 flex items-center justify-center cursor-pointer"
       >
         <motion.svg
           xmlns="http://www.w3.org/2000/svg"

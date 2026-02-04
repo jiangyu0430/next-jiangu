@@ -99,7 +99,7 @@ export const ResponsiveCardLayout = () => {
             </div>
             <div className="text-zinc-500 text-base leading-relaxed text-justify">
               2020 年毕业参加工作，主导过智能制造、云计算存储等 B
-              端产品设计工作，覆盖设计全流程。
+              端产品设计工作，覆盖设计全流程
             </div>
           </div>
         </Card>
@@ -144,7 +144,7 @@ export const ResponsiveCardLayout = () => {
             <div className="flex items-baseline text-5xl mb-4">
               <CountUp
                 from={0}
-                to={40}
+                to={25}
                 direction="up"
                 duration={0.3}
                 delay={0.4}
@@ -153,8 +153,7 @@ export const ResponsiveCardLayout = () => {
               +
             </div>
             <div className="text-zinc-500 text-base leading-relaxed text-justify">
-              Across web, product, and identity — each one built with care and
-              precision.
+              深度参与多款核心产品设计项目，统筹设计落地与跨团队协同，把控项目设计交付节奏
             </div>
           </div>
         </Card>
